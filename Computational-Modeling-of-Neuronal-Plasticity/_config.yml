@@ -1,8 +1,8 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: My sample book
-author: The Jupyter Book Community
+title: Computational Modeling of Neuronal Plasticity
+author: Jochen Triesch
 logo: logo.png
 
 # Force re-execution of notebooks on each build.
@@ -17,7 +17,8 @@ latex:
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
-  - references.bib
+#  - https://github.com/tristanstoeber/Bibliography/blob/300aff5626138c2bb26e6e629a7fcb09c364a12f/bib.bib
+  - bib.bib
 
 # Information about where the book exists on the web
 repository:

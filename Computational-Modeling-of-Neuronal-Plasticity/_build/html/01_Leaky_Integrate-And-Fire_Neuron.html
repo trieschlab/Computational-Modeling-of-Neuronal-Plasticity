@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Leaky Integrate-and-Fire Neuron &#8212; Computational Modeling of Neuronal Plasticity</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction" href="00_preword.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational Modeling of Neuronal Plasticity</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="content.html">
+   Content in Jupyter Book
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="00_preword.html">
+     Introduction
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     The Leaky Integrate-and-Fire Neuron
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/01_Leaky_Integrate-And-Fire_Neuron.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F01_Leaky_Integrate-And-Fire_Neuron.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/01_Leaky_Integrate-And-Fire_Neuron.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-neuron-with-step-current-input">
+   A neuron with step current input
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#excitatory-and-inhibitory-inputs">
+   Excitatory and inhibitory inputs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integration-time-step">
+   Integration time step
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#poisson-spikes">
+   Poisson spikes
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="the-leaky-integrate-and-fire-neuron">
+<h1>The Leaky Integrate-and-Fire Neuron<a class="headerlink" href="#the-leaky-integrate-and-fire-neuron" title="Permalink to this headline">¶</a></h1>
+<p>We will begin our course with the basics of the neuron model at the centre of this course, the Leaky Integrate-and-Fire (LIF) Neuron. We will try different inputs and spike input patterns, and see how they shape the response of the neuron. The LIF neuron model only gives a very simplified description of a neuron’s behaviour. In reality neurons are very elaborate structures with complex dynamics of membrane voltage. The approximation with a single value for the membrane voltage is called a ‘’point-neuron’’ and is very frequently used in neural network models. More about this neuron model can be found in the book Theoretical Neuroscience \cite{Dayan2001}, section 5.4: ‘’Integrate-and-Fire Models’’.</p>
+<div class="section" id="a-neuron-with-step-current-input">
+<h2>A neuron with step current input<a class="headerlink" href="#a-neuron-with-step-current-input" title="Permalink to this headline">¶</a></h2>
+<p>We start with the simplest version of the LIF neuron, which receives a constant current input. Constant current inputs were used in classical electrophysiology experiments to detect basic properties of the neuronal membrane.
+This neuron is characterized by the following membrane voltage equation:</p>
+<p>\begin{equation}
+\tau_{\mathrm{mem}} \frac{dV}{dt} = E_\mathrm{leak} - V + R_ \mathrm{m} I_ \mathrm{ext} .
+\end{equation}
+Equation (1) describes the membrane voltage V, of which the units can be either in mV or Volt, although mV is used more frequently.
+<span class="math notranslate nohighlight">\(\tau_\mathrm{mem}\)</span> is the membrane time constant, 20 ms.
+<span class="math notranslate nohighlight">\(E_\mathrm{leak}\)</span> is the reversal potential for the leak, -60 mV.
+<span class="math notranslate nohighlight">\(R_ \mathrm{m}\)</span> is the membrane resistance, 10 M<span class="math notranslate nohighlight">\(\Omega\)</span>.
+Finally, <span class="math notranslate nohighlight">\(I_ \mathrm{ext}\)</span> is the external current applied to the neuron, 2.0 nA.</p>
+<p>The neuron resets back to the reset value <span class="math notranslate nohighlight">\(V_\mathrm{reset}\)</span>  =   -70 mV whenever its membrane voltage hits the threshold <span class="math notranslate nohighlight">\(V_\mathrm{thresh}\)</span>  = -50 mV. Set the program to record an ‘’output spike’’ every time <span class="math notranslate nohighlight">\(V\)</span> hits the threshold.
+Using the above equation, make a simple python program to simulate a neuron for 200 ms, in response to 2.0 nA of constant applied current.
+Use Euler integration to solve the equations. It is helpful to make a separate python file in which the Euler integration is performed.
+At first, use an Euler integration time step of 0.1 ms. This integration time step will be looked at in more detail in a following section.
+Plot the membrane voltage over time. Show the spike times as vertical lines in the same plot. What is the spiking behaviour of the neuron? What happens if the external current is increased to 4.0 nA?</p>
+</div>
+<div class="section" id="excitatory-and-inhibitory-inputs">
+<h2>Excitatory and inhibitory inputs<a class="headerlink" href="#excitatory-and-inhibitory-inputs" title="Permalink to this headline">¶</a></h2>
+<p>We now remove the constant input current and add inputs that more closely resemble the synaptic inputs neurons would receive from other neurons. The equation for the neuron is now:</p>
+<p>\begin{equation}
+\tau_{\mathrm{mem}} \frac{dV}{dt} = E_\mathrm{leak} - V + g_\mathrm{e} (E_\mathrm{e} - V) ,
+\end{equation}
+where we have added a conductance <span class="math notranslate nohighlight">\(g_e\)</span> for an excitatory input synapse. This conductance obeys the following equation, which contains a simple exponential decay:</p>
+<p>\begin{equation}
+\frac{dg_\mathrm{e}}{dt} = - \frac{g_\mathrm{e}}{\tau_{\mathrm{e}}}  + w_\mathrm{e}\sum_{s=1}^{N}\delta(t-t_s).
+\end{equation}</p>
+<p>The <span class="math notranslate nohighlight">\(g_\mathrm{e}\)</span> term represents the excitatory input conductance that comes from another neuron. Note that <span class="math notranslate nohighlight">\(\delta (s)\)</span> is the Dirac delta function.
+<span class="math notranslate nohighlight">\(E_\mathrm{e}\)</span> is the reversal potential for excitatory (depolarizing) inputs, here let us set it to 0 mV.
+<span class="math notranslate nohighlight">\(\tau_\mathrm{e}\)</span> is the postsynaptic potential (PSP) time constant, let us use <span class="math notranslate nohighlight">\(\tau_\mathrm{e} =\)</span> 3 ms.</p>
+<p>For each spike <span class="math notranslate nohighlight">\(t_s\)</span> that arrives, the conductance is increased by an amount   <span class="math notranslate nohighlight">\(w_\mathrm{e}\)</span>, which is the strength, or weight, of the excitatory synapse.
+The equation above is written for a single excitatory synapse. In the case of multiple synapses onto a postsynaptic neuron, <span class="math notranslate nohighlight">\(g_\mathrm{e}\)</span> is increased by each arriving spike by the respective synaptic weight of that synapse.
+The next step is to adapt the model used in the previous section to include the excitatory input of another neuron, in the form of a single synapse as described by equation (3).  Assume periodic (regularly spaced) spikes with firing rate 6 Hz. Set  <span class="math notranslate nohighlight">\(w_\mathrm{e} \)</span> to 0.5.
+Make a plot of the membrane potential again, and look at the spiking behaviour. What happens to the spiking of the neuron if  <span class="math notranslate nohighlight">\(w_\mathrm{e} \)</span> is increased? A larger excitatory synaptic weight should lead to larger depolarization and more frequent postsynaptic spikes.</p>
+<p>Let us also add an inhibitory synapse to the same neuron:
+\begin{equation}
+\tau_{\mathrm{mem}} \frac{dV}{dt} = E_\mathrm{leak} - V + g_\mathrm{e} (E_\mathrm{e} - V) + g_\mathrm{i} (E_\mathrm{i} - V) ,
+\end{equation}</p>
+<p>\begin{equation}
+\frac{dg_\mathrm{i}}{dt} = - \frac{g_\mathrm{i}}{\tau_{\mathrm{i}}}  + w_\mathrm{i}\sum_{p=1}^{P}\delta(t-t_p).
+\end{equation}</p>
+<p>Where <span class="math notranslate nohighlight">\(g_\mathrm{i}\)</span> is the inhibitory conductance, <span class="math notranslate nohighlight">\(\tau_{\mathrm{i}}\)</span> is the PSP time constant of inhibition, 5 ms, and <span class="math notranslate nohighlight">\(E_{\mathrm{i}}\)</span> the reversal potential for inhibition, -80 mV, <span class="math notranslate nohighlight">\( w_\mathrm{i}\)</span> is the strength of the inhibitory synapse, and <span class="math notranslate nohighlight">\(t_p\)</span> the time of an inhibitory input spike.
+Now add the inhibitory synapse to the neuron by combining equations (3-5), and assume periodic spikes with frequency 6 Hz for excitatory, and 3 Hz for inhibitory input synapses. Show the membrane potential of the neuron for 2 seconds.
+In order to obtain any spikes in the neuron, the excitatory synapse should be sufficiently strong. Therefore, set <span class="math notranslate nohighlight">\(w_\mathrm{e} = \)</span> 3.0, and <span class="math notranslate nohighlight">\(w_\mathrm{i} =\)</span> 3.0 to match. In following units we will deal with more realistic settings of multiple synaptic inputs.</p>
+</div>
+<div class="section" id="integration-time-step">
+<h2>Integration time step<a class="headerlink" href="#integration-time-step" title="Permalink to this headline">¶</a></h2>
+<p>(Video 1.3)
+We have made some simulations of the neuron using various inputs. We can make a small sidestep to ensure our simulation is precise enough. %The integration step should not be too close to the simulation time step, or the results will be imprecise.
+Let us test the influence of the integration time step by looking at the excitatory conductance <span class="math notranslate nohighlight">\(g_e\)</span>.
+The analytical solution of the differential equation of <span class="math notranslate nohighlight">\(g_\mathrm{e}\)</span>, assuming <span class="math notranslate nohighlight">\(g_\mathrm{e}\)</span> = 1 at t=0, is</p>
+<p>\begin{equation}
+g_\mathrm{e} (t) = e^{\frac{-t}{\tau_\mathrm{e}}}  .
+\end{equation}
+Plot the analytical solution in a graph.
+Now integrate the equation by using the Euler method, assuming</p>
+<p>\begin{equation}
+g_\mathrm{e}  \rightarrow g_\mathrm{e}  + 1 ,
+\end{equation}
+at t=0. This corresponds to the response to a single input spike at t=0, and a synaptic weight of 1. In the same graph, let us plot <span class="math notranslate nohighlight">\(g_e\)</span> obtained from the Euler integration, in a different colour.<br />
+While keeping a fixed simulation time step of 1 ms, you can try an integration step of 0.001 ms, 0.01 ms, 0.1 ms, and 1 ms. Finally, select the optimal time step based on accuracy and computation time. Do not forget to zoom in closely to the curve in your figure to observe smaller inaccuracies.</p>
+</div>
+<div class="section" id="poisson-spikes">
+<h2>Poisson spikes<a class="headerlink" href="#poisson-spikes" title="Permalink to this headline">¶</a></h2>
+<p>(Video 1.4)
+We now consider that the spikes the neuron receives resemble the irregular patters that are recorded in experiments. For example, a frequently used model for spike trains is the Poisson process. This means that spikes occur independently of each other.  If the average firing rate remains stable over time, it is called a homogeneous Poisson process, which is what we will apply here. Since a property of a Poisson spike train is that the inter-spike intervals are distributed exponentially, a sequence of input spike times can easily be obtained by randomly sampling inter-spike intervals from an exponential probability density function.</p>
+<p>Now expand the neuron model with  <span class="math notranslate nohighlight">\(N_\mathrm{e}=\)</span>10 excitatory and <span class="math notranslate nohighlight">\(N_\mathrm{i}=\)</span>10 inhibitory inputs, with Poisson spike trains, each with a firing rate (intensity) of 10 Hz.
+In this model of multiple excitatory and inhibitory inputs, the equations now become:</p>
+<p>\begin{equation}
+\tau_{\mathrm{mem}} \frac{dV}{dt} = E_\mathrm{leak} - V + \sum^{N_\mathrm{e}}<em>{m=1}{g</em>{\mathrm{e},m}(E_\mathrm{e} - V)}  + \sum^{N_\mathrm{i}}<em>{n=1}{g</em>{\mathrm{i},n}(E_\mathrm{i} - V)} ,
+\end{equation}</p>
+<p>\begin{align}
+\frac{dg_{\mathrm{e},m}}{dt} = - \frac{g_{\mathrm{e},m}}{\tau_{\mathrm{e}}}  + w_{\mathrm{e},m}\sum_{s=1}^{N_m}\delta(t-t_{s}) ,\
+\frac{dg_{\mathrm{i},n}}{dt} = - \frac{g_{\mathrm{i},n}}{\tau_{\mathrm{i}}}  + w_{\mathrm{i},n}\sum_{p=1}^{P_n}\delta(t-t_{p}).
+\end{align}</p>
+<p>When the neuron receives excitation and inhibition, and excitation and inhibition are balanced, the output of the neuron should be irregular \cite{Shadlen1998}.
+You can measure the irregularity of the output spikes by plotting the inter-spike intervals (ISIs). If the distribution of ISIs follows an exponential shape, and if the coefficient of variation (CV, the standard deviation/mean) of the ISIs is 1, the output is irregular. A perfect Poisson process has exponentially distributed ISIs, and a CV of the ISIs of 1. If the CV of the ISIs deviates from 1, this can be a sign of more regular firing or bursting.</p>
+<p>Start with setting all <span class="math notranslate nohighlight">\(w_{\mathrm{e},m} = w_{\mathrm{i},n} = \)</span> 0.5. Is the spiking output of the neuron irregular? It will be necessary to adjust <span class="math notranslate nohighlight">\(w_\mathrm{e}\)</span> or <span class="math notranslate nohighlight">\(w_\mathrm{i}\)</span> to generate a more/less regular output from the neuron. Since the <span class="math notranslate nohighlight">\(\tau_{\mathrm{i}}\)</span> is larger than <span class="math notranslate nohighlight">\(\tau_{\mathrm{e}}\)</span>, you will need to increase <span class="math notranslate nohighlight">\(w_{\mathrm{e}}\)</span> a little to compensate for inhibition and obtain excitation/inhibition balance in the input to the neuron.
+Show plots of the neuronal membrane V, spike times and show the distributions of ISIs and CVs of the ISIs. Insert the mean of the histograms in the plot titles.
+The number of ISIs in each trial is related to the output firing rate. The output firing rate, in turn, is mainly shaped here by the strength of the input weights and firing rates. Generally speaking,  input spike timing also plays a role, but we will not address this yet, as here all input spike trains are Poisson with stationary firing rates.
+Make sure to run a sufficiently long simulation or a number of separate shorter runs (‘trials’), so that you have enough ISI datapoints to clearly see the distribution of ISIs. For the CV of the ISIs, try to obtain at least 50 independent trials of 10 seconds each, so that you have 50 CV datapoints for the distribution, where each CV is based on at least 20 ISIs.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="00_preword.html" title="previous page">Introduction</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jochen Triesch<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

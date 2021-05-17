@@ -4,5 +4,5 @@
 - file: intro
 - file: content
   sections:
-    - file: markdown
-    - file: notebooks
+    - file: 00_preword
+    - file: 01_Leaky_Integrate-And-Fire_Neuron.ipynb
