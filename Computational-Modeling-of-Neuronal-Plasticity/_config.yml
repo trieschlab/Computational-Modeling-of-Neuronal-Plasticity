@@ -14,6 +14,9 @@ execute:
 latex:
   latex_documents:
     targetname: book.tex
+  figure_align: "H"
+  latex_elements:
+    preamble: '\setkeys{Gin}{width=.75\csname Gin@nat@width\endcsname,keepaspectratio}'
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
