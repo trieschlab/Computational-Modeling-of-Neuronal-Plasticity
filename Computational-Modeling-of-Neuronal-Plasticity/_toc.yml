@@ -3,5 +3,8 @@ root: intro
 sections:
 - file: content
   sections:
-  - file: 00_preword
-  - file: 01_Leaky_Integrate-And-Fire_Neuron.ipynb
+    - file: 00_preword
+    - file: 01_Leaky_Integrate-And-Fire_Neuron.ipynb
+    - file: 04_Homeostasis.ipynb
+    - file: 05_Short-term_plasticity_(STP).ipynb
+    - file: 06_Epilogue.ipynb
