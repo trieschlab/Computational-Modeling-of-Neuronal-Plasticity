@@ -1,8 +1,7 @@
-# Table of content
-# Learn more at https://jupyterbook.org/customize/toc.html
-#
-- file: intro
+format: jb-article
+root: intro
+sections:
 - file: content
   sections:
-    - file: 00_preword
-    - file: 01_Leaky_Integrate-And-Fire_Neuron.ipynb
+  - file: 00_preword
+  - file: 01_Leaky_Integrate-And-Fire_Neuron.ipynb
