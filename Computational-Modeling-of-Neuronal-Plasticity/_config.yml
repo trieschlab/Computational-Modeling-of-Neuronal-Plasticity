@@ -20,7 +20,6 @@ latex:
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
-#  - https://github.com/tristanstoeber/Bibliography/blob/300aff5626138c2bb26e6e629a7fcb09c364a12f/bib.bib
   - bib.bib
 
 # Information about where the book exists on the web
