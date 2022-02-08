@@ -1,7 +1,6 @@
 format: jb-book
-root: intro
+root: 00_preword
 chapters:
-  - file: 00_preword
   - file: 01_Leaky_Integrate-And-Fire_Neuron.ipynb
   - file: 02_AdaptationInSpikingBehavior.ipynb
   - file: 03_SpikeTimingDependentPlasticity.ipynb
